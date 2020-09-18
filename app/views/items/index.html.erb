@@ -3,6 +3,14 @@
   <li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete, class: "logout" %></li> 
 </ul>
 
+<%= form_with model: @item, local: true do |f|  %>
+
+  
+  <%= f.text_field :name, placeholder:"商品名", maxlength:"20" %>
+  <%= f.number_field :stock, placeholder:"在庫数 整数のみ", min:0, max:100 %>
+  <%= f.submit "簡易登録"  %>
+
+<% end %>
 
 
 <p>hoge</p>
