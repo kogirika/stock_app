@@ -5,6 +5,7 @@
 
 <%= form_with model: @item, local: true do |f|  %>
 
+  <%= render 'shared/error_messages', model: f.object %>
   
   <%= f.text_field :name, placeholder:"商品名", maxlength:"20" %>
   <%= f.number_field :stock, placeholder:"在庫数 整数のみ", min:0, max:100 %>
