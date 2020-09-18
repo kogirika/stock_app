@@ -26,11 +26,11 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column         | Type   | Options     |
-| -------------- | ------ | ----------- |
-| nickname       | string | null: false |
-| email          | string | null: false |
-| password       | string | null: false |
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| nickname | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
 
 
 ### Association
@@ -39,16 +39,13 @@ Things you may want to cover:
 
 ## Items テーブル
 
-| Column                  | Type       | Options                        |
-| ----------------------- | ---------- | ------------------------------ |
-| name                    | string     | null: false                    |
-| category_id             | integer    | null: false                    |
-| status_id               | integer    | null: false                    |
-| ship_charge_id          | integer    | null: false                    |
-| prefecture_id           | integer    | null: false                    |
-| ship_preparation_day_id | integer    | null: false                    |
-| price                   | integer    | null: false                    |
-| user                    | references | null: false, foreign_key: true |
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| name        | string     | null: false                    |
+| stock       | integer    | null: false                    |
+| price       | integer    |                                |
+| category_id | integer    |                                |
+| user        | references | null: false, foreign_key: true |
 
 ### Association
 
