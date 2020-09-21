@@ -1,0 +1,13 @@
+
+<%= form_with model: @item, local: true do |f|  %>
+
+  <%= render 'shared/error_messages', model: f.object %>
+  
+  <%= f.text_field :name, placeholder:"商品名", maxlength:"20" %>
+  <%= f.number_field :stock, placeholder:"在庫数 整数のみ", min:0 %>
+  <%= f.number_field :price, placeholder:"価格", min:0 %>
+  <%= f.collection_select(:category_id, Category.all, :id, :name, {}) %>
+  <%= f.submit "編集"  %>
+
+<% end %>
+
