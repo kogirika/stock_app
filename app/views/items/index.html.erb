@@ -24,7 +24,7 @@
   <%= i.price.to_s(:delimited) unless i.price.nil?%>
   <%= link_to '↑','#' %>
   <%= link_to '↓','#' %>
-  <%= link_to 'edit','#' %>
+  <%= link_to '編集', edit_item_path(i.id) %>
 
   </div>
 
