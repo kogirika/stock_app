@@ -8,18 +8,20 @@
   <%= render 'shared/error_messages', model: f.object %>
   
   <%= f.text_field :name, placeholder:"商品名", maxlength:"20" %>
-  <%= f.number_field :stock, placeholder:"在庫数 整数のみ", min:0, max:100 %>
-  <%= f.submit "簡易登録"  %>
+  <%= f.number_field :stock, placeholder:"在庫数 整数のみ", min:0 %>
+  <%= f.number_field :price, placeholder:"価格", min:0 %>
+  <%= f.collection_select(:category_id, Category.all, :id, :name, {}) %>
+  <%= f.submit "登録"  %>
 
 <% end %>
 
 
 <% @items.each do |i| %>
   <div>
-  <%= i.category_id %>
+  <%= i.category.name %>
   <%= i.name %>
   <%= i.stock %>
-  <%= i.price %>
+  <%= i.price.to_s(:delimited) unless i.price.nil?%>
   <%= link_to '↑','#' %>
   <%= link_to '↓','#' %>
   <%= link_to 'edit','#' %>
