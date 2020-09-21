@@ -22,8 +22,8 @@
   <%= i.name %>
   <%= i.stock %>
   <%= i.price.to_s(:delimited) unless i.price.nil?%>
-  <%= link_to '↑','#' %>
-  <%= link_to '↓','#' %>
+  <%= link_to '↑',updown_item_path(i.id,num: 1) %>
+  <%= link_to '↓',updown_item_path(i.id,num: -1) %>
   <%= link_to '編集', edit_item_path(i.id) %>
   <%= link_to '削除', item_path(i.id), method: :DELETE, data: { confirm: "#{i.name}を削除しますか？" } %>
 
@@ -31,6 +31,3 @@
   </div>
 
 <% end %>
-
-
-<p>hoge</p>

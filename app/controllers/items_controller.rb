@@ -37,6 +37,19 @@ class ItemsController < ApplicationController
     end
   end
 
+  def updown
+    @item1 = Item.find(params[:id])
+    @item1.stock += params[:num].to_i
+    if @item1.valid?
+      @item1.save
+      redirect_to root_path
+    else
+      @items = Item.display(current_user.id)
+      render :index
+    end
+    
+    
+  end
 
 
   private
