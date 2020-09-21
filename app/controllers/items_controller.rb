@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @items = Item.display(current_user.id)
     @item = Item.new
   end
 

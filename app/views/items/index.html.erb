@@ -14,4 +14,19 @@
 <% end %>
 
 
+<% @items.each do |i| %>
+  <div>
+  <%= i.category_id %>
+  <%= i.name %>
+  <%= i.stock %>
+  <%= i.price %>
+  <%= link_to '↑','#' %>
+  <%= link_to '↓','#' %>
+  <%= link_to 'edit','#' %>
+
+  </div>
+
+<% end %>
+
+
 <p>hoge</p>
