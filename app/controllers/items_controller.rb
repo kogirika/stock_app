@@ -38,17 +38,17 @@ class ItemsController < ApplicationController
   end
 
   def updown
-    @item1 = Item.find(params[:id])
-    @item1.stock += params[:num].to_i
-    if @item1.valid?
-      @item1.save
+    @item = Item.find(params[:id])
+    @item.stock += params[:num].to_i
+    if @item.valid?
+      @item.save
       redirect_to root_path
     else
+      @item = Item.new
+      @item.errors.add(:stock, "はマイナスにできません")
       @items = Item.display(current_user.id)
       render :index
     end
-    
-    
   end
 
 
