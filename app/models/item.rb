@@ -9,6 +9,9 @@ class Item < ApplicationRecord
   # バリデーション
   with_options presence: true do
     validates :name, :stock, :category_id
+    validates :stock, numericality: { only_integer: true,
+                                      greater_than_or_equal_to: 0,
+                                      message: "はマイナスにできません" }
   end
 
 
