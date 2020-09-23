@@ -1,11 +1,17 @@
 
 
 <div class="container" >
-<ul class='lists-right'>
-  <li>ニックネーム：<%= current_user.nickname %></li> 
-  <li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete, class: "logout" %></li> 
-</ul>
+  <ul class="nav justify-content-end nav-tabs">
+    <li class="nav-item nav-link">
+      ログインユーザー：<%= current_user.nickname %>
+    </li> 
+    <li class="nav-item">
+      <%= link_to 'ログアウト', destroy_user_session_path , method: :delete, class: "nav-link" %>
+    </li> 
+  </ul>
 </div>
+
+
 <div class="container" >
 <%= form_with model: @item, local: true do |f|  %>
 
