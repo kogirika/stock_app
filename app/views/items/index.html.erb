@@ -22,16 +22,16 @@
     <div class="form-group">
     <div class="form-row ">
         <div class="col">
-          <%= f.text_field :name, placeholder:"商品名", maxlength:"20", class: "form-control " %>
+          <%= f.text_field :name, placeholder:"商品名（必須）", maxlength:"20", class: "form-control " %>
         </div>
         <div class="col">
-          <%= f.number_field :stock, placeholder:"在庫数 整数のみ", min:0, max:100, class: "form-control " %>
+          <%= f.number_field :stock, placeholder:"在庫数（必須）", min:0, max:100, class: "form-control " %>
         </div>
         <div class="col">
-          <%= f.number_field :price, placeholder:"価格", min:0, max:100000, step:10, class: "form-control" %>
+          <%= f.number_field :price, placeholder:"価格（任意）", min:0, max:100000, step:10, class: "form-control" %>
         </div>
         <div class="col">
-          <%= f.collection_select(:category_id, Category.all, :id, :name, {}, class: "form-control ")%>
+          <%= f.collection_select(:category_id, Category.all, :id, :name, {}, class: "form-control")%>
         </div>
         <div class="col">
           <%= f.submit "登録" ,class: "form-control btn btn-primary" %>

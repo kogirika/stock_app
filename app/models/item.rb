@@ -8,11 +8,11 @@ class Item < ApplicationRecord
 
   # バリデーション
   with_options presence: true do
-    validates :name, :stock, :category_id
-    validates :stock, numericality: { only_integer: true,
-                                      greater_than_or_equal_to: 0,
-                                      message: "はマイナスにできません" }
+    validates :name, :category_id
   end
+  validates :stock, numericality: { only_integer: true,
+                                    greater_than_or_equal_to: 0,
+                                    message: "は0以上を入力してください" }
 
 
   #一覧表示をcurrent_userのものだけにする

@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+      @items = Item.display(current_user.id)
       render :index
     end
   end
