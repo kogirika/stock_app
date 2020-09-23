@@ -13,18 +13,32 @@
 
 
 <div class="container" >
-<%= form_with model: @item, local: true do |f|  %>
+  <%= form_with model: @item, local: true do |f| %>
 
-  <%= render 'shared/error_messages', model: f.object %>
-  
-  <%= f.text_field :name, placeholder:"商品名", maxlength:"20" %>
-  <%= f.number_field :stock, placeholder:"在庫数 整数のみ", min:0 %>
-  <%= f.number_field :price, placeholder:"価格", min:0 %>
-  <%= f.collection_select(:category_id, Category.all, :id, :name, {}) %>
-  <%= f.submit "登録"  %>
-
-<% end %>
+    <%= render 'shared/error_messages', model: f.object %>
+    <div class="form-group">
+    <div class="form-row ">
+        <div class="col">
+          <%= f.text_field :name, placeholder:"商品名", maxlength:"20", class: "form-control " %>
+        </div>
+        <div class="col">
+          <%= f.number_field :stock, placeholder:"在庫数 整数のみ", min:0, class: "form-control " %>
+        </div>
+        <div class="col">
+          <%= f.number_field :price, placeholder:"価格", min:0, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.collection_select(:category_id, Category.all, :id, :name, {}, class: "form-control ")%>
+        </div>
+        <div class="col">
+          <%= f.submit "登録" ,class: "form-control btn btn-primary" %>
+        </div>
+    </div>
+    </div>
+  <% end %>
 </div>
+
+
 <div class="container" >
   <table class="table table-condensed table-hover">
     <thead class="thead-light">
