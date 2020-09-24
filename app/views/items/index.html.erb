@@ -1,28 +1,31 @@
+<body style="isplay: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;">
+
+  <div class="container mb-4 border-dark border-bottom">
+    <ul class="nav">
+      <li class="nav-item nav-link" style="width:70%">
+        <b>Stock_app</b>
+      </li>
+      <li class="nav-item nav-link" style="width:15%%">
+        ユーザー：<%= current_user.nickname %>
+      </li>
+      <li class="nav-item text-right" style="width:15%">
+        <%= link_to 'ログアウト', destroy_user_session_path , method: :delete, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
 
 
-<div class="container mb-4 border-dark border-bottom" >
-  <ul class="nav">
-    <li class="nav-item nav-link" style="width:60%">
-      <b>Stock_app</b>
-    </li> 
-    <li class="nav-item nav-link" style="width:25%">
-      ログインユーザー：<%= current_user.nickname %>
-    </li> 
-    <li class="nav-item" style="width:15%">
-      <%= link_to 'ログアウト', destroy_user_session_path , method: :delete, class: "nav-link" %>
-    </li> 
-  </ul>
-</div>
-
-
-<div class="container" >
-  <%= form_with model: @item, local: true do |f| %>
+  <div class="container">
+    <%= form_with model: @item, local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
     <div class="form-group">
-    <div class="form-row ">
+      <div class="form-row ">
         <div class="col">
-          <%= f.text_field :name, placeholder:"商品名（必須）", maxlength:"20", class: "form-control " %>
+          <%= f.text_field :name, placeholder:"品名（必須）", maxlength:"20", class: "form-control " %>
         </div>
         <div class="col">
           <%= f.number_field :stock, placeholder:"在庫数（必須）", min:0, max:100, class: "form-control " %>
@@ -31,57 +34,64 @@
           <%= f.number_field :price, placeholder:"価格（任意）", min:0, max:100000, step:10, class: "form-control" %>
         </div>
         <div class="col">
-          <%= f.collection_select(:category_id, Category.all, :id, :name, {}, class: "form-control")%>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">区分</label>
+            </div>
+            <%= f.collection_select(:category_id, Category.all, :id, :name, {}, class: "form-control")%>
+          </div>
         </div>
         <div class="col">
           <%= f.submit "登録" ,class: "form-control btn btn-primary" %>
         </div>
+      </div>
     </div>
-    </div>
-  <% end %>
-</div>
-
-
-<div class="container " >
-  <table class="table table-condensed table-hover" >
-    <thead class="thead-light">
-      <tr>
-        <th style="width:15%">区分</th>
-        <th style="width:21%">品名</th>
-        <th style="width:13%">在庫</th>
-        <th style="width:13%">価格</th>
-        <th style="width:9%"></th>
-        <th style="width:9%"></th>
-        <th style="width:10%"></th>
-        <th style="width:10%"></th>
-      </tr>
-    </thead>
-    <% @items.each do |i| %>
-    <tbody>
-      <tr>
-        <td><%= i.category.name %></td>
-        <th><%= i.name %></th>
-        <td><%= i.stock %></td>
-        <td><%= i.price.to_s(:delimited) unless i.price.nil?%></td>
-        <td>
-          <%= link_to ' + ',updown_item_path(i.id,num: 1), class:"btn btn-primary px-4" %>
-        </td>
-        <td>
-          <% unless i.stock == 0 %>
-            <%= link_to ' − ',updown_item_path(i.id,num: -1), class:"btn btn-danger px-4" %>
-          <% else %>
-            <%= link_to ' − ',updown_item_path(i.id,num: -1), class:"btn btn-danger px-4 disabled" %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to '編集', edit_item_path(i.id), class:"btn btn-success px-3" %>
-        </td>
-        <td>
-          <%= link_to '削除', item_path(i.id), method: :DELETE,
-                    class:"btn btn-dark px-3", data: { confirm: "#{i.name}を削除しますか？" } %>
-        </td>
-      </tr>
-    </tbody>
     <% end %>
-  </table>
-</div>
+  </div>
+
+
+  <div class="container ">
+    <table class="table table-condensed table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th style="width:21%">品名</th>
+          <th style="width:13%">在庫</th>
+          <th style="width:13%">価格</th>
+          <th style="width:15%">区分</th>
+          <th style="width:9%"></th>
+          <th style="width:9%"></th>
+          <th style="width:10%"></th>
+          <th style="width:10%"></th>
+        </tr>
+      </thead>
+      <% @items.each do |i| %>
+      <tbody>
+        <tr>
+          <th><%= i.name %></th>
+          <td><%= i.stock %></td>
+          <td><%= i.price.to_s(:delimited) unless i.price.nil?%></td>
+          <td><%= i.category.name %></td>
+          <td>
+            <%= link_to ' + ',updown_item_path(i.id,num: 1), class:"btn btn-primary px-4" %>
+          </td>
+          <td>
+            <% unless i.stock == 0 %>
+            <%= link_to ' − ',updown_item_path(i.id,num: -1), class:"btn btn-danger px-4" %>
+            <% else %>
+            <%= link_to ' − ',updown_item_path(i.id,num: -1), class:"btn btn-danger px-4 disabled" %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to '編集', edit_item_path(i.id), class:"btn btn-success px-3" %>
+          </td>
+          <td>
+            <%= link_to '削除', item_path(i.id), method: :DELETE,
+                    class:"btn btn-dark px-3", data: { confirm: "#{i.name}を削除しますか？" } %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+
+</body>
