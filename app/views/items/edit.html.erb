@@ -1,13 +1,41 @@
+<body style="isplay: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;">
 
-<%= form_with model: @item, local: true do |f|  %>
+  <div class="container">
+    <%= form_with model: @item, local: true do |f| %>
 
-  <%= render 'shared/error_messages', model: f.object %>
-  
-  <%= f.text_field :name, placeholder:"商品名", maxlength:"20" %>
-  <%= f.number_field :stock, placeholder:"在庫数 整数のみ", min:0 %>
-  <%= f.number_field :price, placeholder:"価格", min:0 %>
-  <%= f.collection_select(:category_id, Category.all, :id, :name, {}) %>
-  <%= f.submit "編集"  %>
+    <%= render 'shared/error_messages', model: f.object %>
 
-<% end %>
+    <div class="form-group">
+      <div class="form-row ">
+        <div class="col">
+          <%= f.text_field :name, placeholder:"品名（必須）", maxlength:"20", class: "form-control " %>
+        </div>
+        <div class="col">
+          <%= f.number_field :stock, placeholder:"在庫数（必須）", min:0, max:100, class: "form-control " %>
+        </div>
+        <div class="col">
+          <%= f.number_field :price, placeholder:"価格（任意）", min:0, max:100000, step:10, class: "form-control" %>
+        </div>
+        <div class="col">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">区分</label>
+            </div>
+            <%= f.collection_select(:category_id, Category.all, :id, :name, {}, class: "form-control")%>
+          </div>
+        </div>
+        <div class="col">
+          <%= f.submit "登録" ,class: "form-control btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <div class="mt-4 mx-auto text-center" style="width: 200px;">
+      <%= link_to '戻る', root_path, class:"btn-link" %>
+    </div>
+  </div>
 
+</body>

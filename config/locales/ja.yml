@@ -1,0 +1,10 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       nickname: ニックネーム
+     item:
+       name: 品名
+       stock: 在庫数
+       price: 価格
+       category_id: 区分
