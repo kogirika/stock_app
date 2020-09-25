@@ -12,7 +12,13 @@ class Item < ApplicationRecord
   end
   validates :stock, numericality: { only_integer: true,
                                     greater_than_or_equal_to: 0,
-                                    message: "は0以上を入力してください" }
+                                    less_than_or_equal_to: 100,
+                                    message: "は0〜100の間で入力してください" }
+  validates :price, numericality: { only_integer: true,
+                                    greater_than_or_equal_to: 0,
+                                    less_than_or_equal_to: 100000,
+                                    message: "を入力する場合は0〜1000,000の間で入力してください" },
+                                    allow_nil: true
 
 
   #一覧表示をcurrent_userのものだけにする
