@@ -77,7 +77,14 @@ devise
 - 区分で表示を変更する機能を追加したい
 <br /><br />
 
+## 画面遷移図
+<img src="https://user-images.githubusercontent.com/67131613/95540153-24ab2700-0a2b-11eb-9ab8-7499e2cc190f.png" width="960px">
+<br />
+
 ## テーブル設計
+#### ER図
+<img src="https://user-images.githubusercontent.com/67131613/95540146-1f4ddc80-0a2b-11eb-83d6-a7f5730bfa14.png" width="960px">
+<br />
 
 #### users テーブル
 
