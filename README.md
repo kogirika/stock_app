@@ -14,7 +14,7 @@ Stock_app
 | --  |  -- |
 | URL | https://stock-29227.herokuapp.com/ |
 | Basic認証のIDとパスワード | admin<br>2323 |
-| 出品者用のメールアドレスとパスワード<br>ニックネーム:hoge |hoge@example.com<br>hoge12|
+| デモユーザーのメールアドレス<br>パスワード<br>ユーザー名 |hoge@example.com<br>hoge12<br>hoge|
 <br /><br />
 
 ## 制作背景
